@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        body {
+            background-image: url('/img/pakai.gif');
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 35px;
+            text-align: center;
+            padding: 20px;
+            font-family: sans-serif;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 100px;
+        }
+        .content {
+            text-align: center;
+            background-color: transparent;
+            box-shadow: 10px 0px 9px 2px rgba(81, 34, 128, 0.95);
+            border-radius: 30px;
+            padding: 5px;
+        }
+        #no1, #no2 {
+            width: 200px;
+            height: 30px;
+            padding-left: 20px;
+            margin-top: 10px;
+            border-radius: 7px;
+        }
+        .angka1, .angka2 {
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .pilihoper{
+            font-family: cursive;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .hasil {
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+            font-family: cursive;
+        }
+        .operation-button {
+            background-color: #248C89;
+            background: linear-gradient(to top left, #24c6cc 32%, #172e5a 77%);
+            box-shadow: 8px 0px 9px 2px rgba(81, 34, 128, 0.95);
+            padding: 10px;
+            width: 50px;
+            border-radius: 30px;
+            margin: 5px;
+            color: rgb(217, 227, 235);
+            font-weight: bold;
+            font-family: cursive;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>KALKULATOR SEDERHANA</h1>
+        <h4 class="angka1">Masukkan Bilangan Pertama<br>
+            <input type="number" id="no1" placeholder="Masukkan disini">
+        </h4>
+        <h4 class="angka2">Masukkan Bilangan Kedua<br>
+            <input type="number" id="no2" placeholder="Masukkan disini">
+        </h4>
+        <h3 class="pilihoper">Pilih Operasi</h3>
+        <button class="operation-button" data-operation="+">+</button>
+        <button class="operation-button" data-operation="-">-</button>
+        <button class="operation-button" data-operation="*">*</button>
+        <button class="operation-button" data-operation="/">/</button>
+        <div class="hasil">
+            <p>Hasilnya: <span id="hasil">(hasilnya berada disini)</span></p>
+        </div>
+    </div>
+    <script src="/Latihan/jquery-3.7.1.min.js"></script>
+    <script>
+        let operasi = {
+            "+": (a, b) => a + b,
+            "-": (a, b) => a - b,
+            "*": (a, b) => a * b,
+            "/": (a, b) => (b !== 0 ? a / b : "tidak bisa dibagi oleh 0"),
+        };
+
+        $(document).ready(function() {
+            $(".operation-button").click(function() {
+                $(".operation-button").removeClass("selected");
+                $(this).addClass("selected");
+                calculate();
+            });
+
+            function calculate() {
+                let no1 = parseInt($("#no1").val());
+                let no2 = parseInt($("#no2").val());
+                let oper = $(".operation-button.selected").data("operation");
+
+                if (isNaN(no1) || isNaN(no2)) {
+                    alert('Harap masukkan angka terlebih dahulu sebelum menghitung');
+                    return;
+                }
+
+                let hasilakhir = operasi[oper](no1, no2);
+                $("#hasil").text(hasilakhir);
+            }
+        });
+    </script>
+</body>
+</html>

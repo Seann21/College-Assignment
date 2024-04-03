@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator Luas dan Volume Bola</title>
+    <style>
+        body{
+            background: #D92929;
+            background-image: radial-gradient(circle farthest-side at top left, #D92929 1%, #5C119E 78%);
+            height: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-family: cursive;
+        }
+
+        .inpt1, .inpt2, .inpt3 {
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        .Lvol {
+            text-align: center;
+            font-family: cursive;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .p1{
+            text-align: center; 
+            padding: 30px; 
+            font-family: cursive; 
+            font-size: 20px;
+            color: #fff;
+        }
+        .awaljri{
+            padding-top: 40px;
+        }
+        button {
+            background: #248C89;
+            background: linear-gradient(to top left, hsl(268, 51%, 40%) 32%, #46bec7 77%);
+            cursor: pointer;
+            padding: 10px;
+            width: 150px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            color: #fff;
+            box-shadow: 3px 0px 7px 2px rgba(91, 26, 196, 0.95);     
+            font-weight: bold;
+            font-size: 17px;
+            font-family: cursive;
+            position: relative;
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1 style="padding-top:15px;">Kalkulator Luas dan Volume Bola</h1>
+        <div class="awaljri">
+            <p class="p1">Masukkan Jari Jari<br>
+                <input type="number" name="jari-jari" id="jari-jari" class="inpt1">
+            </p>
+        </div>
+        <button type="button" id="hitung">Hitung</button>
+
+        <br>
+        <div class="Lvol">
+            Luas Permukaan Bola
+            <br><input type="number" readonly class="inpt2">
+            <br>Volume Bola<br>
+            <input type="number" readonly class="inpt3">
+            <br>
+        </div>
+    </div>
+    <script>
+        function luasPermukaanBola(jariJari) {
+            return 4 * Math.PI * jariJari * jariJari;
+        }
+
+        function volumeBola(jariJari) {
+            return (4 / 3) * Math.PI * jariJari * jariJari * jariJari;
+        }
+
+        let inputJariJari = document.getElementById("jari-jari");
+        let tombolHitung = document.getElementById("hitung");
+        let inputLuasPermukaan = document.querySelector(".inpt2");
+        let inputVolume = document.querySelector(".inpt3");
+
+        tombolHitung.addEventListener("click", function() {
+            let jariJari = parseFloat(inputJariJari.value);
+            let luasPermukaan = luasPermukaanBola(jariJari);
+            let volume = volumeBola(jariJari);
+            inputLuasPermukaan.value = luasPermukaan.toFixed(2);
+            inputVolume.value = volume.toFixed(2);
+        });
+    </script>
+</body>
+</html>

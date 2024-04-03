@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Mobil</title>
+    <style>
+        body {
+            background-image: url('/img/asli.gif');
+            background-size: cover;
+       
+        }
+
+        .content {
+            padding: 5vh;
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 40px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .color-change {
+            color: gold;
+        }
+
+        .mobil {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button id="atas">Atas</button>
+        <button id="bawah">Bawah</button>
+        <button id="kanan">Kanan</button>
+        <button id="kiri">Kiri</button>
+        <button id="ganti-warna-judul">Ganti Warna Judul</button>
+    </div>
+    <h4 id="judul">Api JQUERY Position & Offset</h4>
+    <img class="mobil" src="/img/mobilsupra.png">
+
+    <script src="/Latihan/jquery-3.7.1.min.js"></script>
+    <script>
+        function arahkanMobil(arah) {
+            let mobil = $('.mobil');
+            let posisiTop = parseInt(mobil.css('top'));
+            let posisiLeft = parseInt(mobil.css('left'));
+            let perubahanPosisi = 40;
+
+            if (arah === 'atas') {
+                mobil.css('top', posisiTop - perubahanPosisi + 'px');
+            } else if (arah === 'bawah') {
+                mobil.css('top', posisiTop + perubahanPosisi + 'px');
+            } else if (arah === 'kanan') {
+                mobil.css('left', posisiLeft + perubahanPosisi + 'px');
+            } else if (arah === 'kiri') {
+                mobil.css('left', posisiLeft - perubahanPosisi + 'px');
+            }
+        }
+
+        function gantiWarnaJudul() {
+            $('#judul').toggleClass('color-change');
+        }
+
+        $('#atas').click(function() {
+            arahkanMobil('atas');
+        });
+
+        $('#bawah').click(function() {
+            arahkanMobil('bawah');
+        });
+
+        $('#kanan').click(function() {
+            arahkanMobil('kanan');
+        });
+
+        $('#kiri').click(function() {
+            arahkanMobil('kiri');
+        });
+
+        $('#ganti-warna-judul').click(function() {
+            gantiWarnaJudul();
+        });
+    </script>
+</body>
+</html>

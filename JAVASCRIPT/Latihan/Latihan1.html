@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator</title>
+    </head>
+    <style>
+        body{
+            background-image: url(/img/bg.gif);
+            background-size: cover;
+        }
+        h1{
+            font-size: 35px;
+            text-align: center;
+            padding: 30px;
+            font-family: sans-serif;
+            color: rgb(217, 227, 235);
+        }
+        .content{
+            display: grid;
+            place-items: center;
+    }
+    #no1, #no2{
+        width: 200px;
+        height: 30px;
+    }
+    
+    .angka1, .angka2{
+        font-size: 20px ;
+        color: rgb(217, 227, 235);
+        text-align: center;
+    }
+    button{
+        background: #248C89;
+        background: linear-gradient(to top left, #248C89 32%, #C2715D 77%);
+        box-shadow: 8px 0px 9px 2px rgba(81, 34, 128, 0.95);     
+        padding: 10px;
+        width: 150px;
+        border-radius: 30px;
+        margin-bottom: 30px;
+        color: rgb(217, 227, 235);
+        font-weight: bold;
+        font-family: cursive;
+    }
+</style>
+<body style="height: 680px;">
+    <div class="content">
+        <h1 style="cursor: pointer;">KALKULATOR SEDERHANA</h1>
+        <h4 class="angka1">Masukkan Angka Pertama
+            <br>
+        <input type="number" id="no1" style="padding-left: 20px;
+        margin-top: 10px;" placeholder="Masukkan disini">
+    </h4>
+    <h4 class="angka2">Masukkan Angka Kedua 
+        <br>
+        <input type="number" id="no2" style="padding-left: 20px;
+        margin-top: 10px;" placeholder="Masukkan disini">
+    </h4>
+    
+    <h3 style="color: rgb(217, 227, 235);">Pilih Operator</h3>
+    <select id="operator" style="width: 227px; height: 35px; margin-bottom: 30px; text-align: center;">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value="*">*</option>
+    </select>
+    
+    <button id="hitung" style="cursor: pointer;">HITUNG</button>
+    <input type="number" id="hasil" style="padding: 13px; text-align: center; " readonly placeholder="Hasilnya disini">
+</div>
+<script>
+
+    document.getElementById("hitung").addEventListener("click", function(){
+        let no1 =parseInt(document.getElementById('no1').value)
+        let no2 =parseInt(document.getElementById('no2').value)
+        let oper = document.getElementById('operator').value
+        let hasilakhir = 0
+
+         if (isNaN(no1) || isNaN(no2)){
+            alert('Harap masukkan angka terlebih dahulu sebelum menghitung')
+            return
+         }   
+
+        if(oper === '+'){
+           hasilakhir = no1+no2
+        } else if(oper === '-'){
+            hasilakhir = no1-no2
+        } else if(oper === '*'){
+            hasilakhir = no1*no2
+        } else if(oper === '/'){
+            if(no2 !==0){
+                hasilakhir = no1/no2
+            }
+        }
+        document.getElementById('hasil').value = hasilakhir
+    });
+</script>
+</body>
+</html>

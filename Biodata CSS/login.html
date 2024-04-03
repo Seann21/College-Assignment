@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- ALL LINK -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- END -->
+   
+</head>
+
+<style>
+    body{
+        margin: auto;
+        padding: 0;
+        background: url("/img/gtagif.gif")no-repeat center center fixed;
+        background-size: cover;
+        
+    }
+</style>
+
+<body>
+    <div class="relative flex flex-col justify-center h-screen overflow-hidden">
+        <div class="w-full p-5 m-auto bg-slate-300 rounded-md shadow-md lg:max-w-lg bg-transparent">
+            <h4 class="text-center text-3xl font-serif hover:font-bold text-emerald-500 cursor-pointer">Bio Login</h4>
+            <div class="text-left text-emerald-200 text-3xl font-semibold mt-4 ml-4 absolute top-0 right-0 transform -translate-y-1/2">
+                <span class="inline-block align-middle" id="clock">Jam Sedang dimuat</span>
+            </div>
+            
+           <!-- Elemen Alert -->
+            <div class="alert alert-success hidden absolute top-0 left-1/2 transform -translate-x-1/2">
+            <svg xmlns="http://www.w3.orzg/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>Yeay Login Berhasil😎</span>
+        </div>
+        <div class="alert alert-error hidden absolute top-0 left-1/2 transform -translate-x-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>Login Gagal email/password tidak valid😼</span>
+            </div>
+            
+            <form class="space-y-4 mt-20">
+                <div>
+                    <label class="label">
+                        <span class="text-base label-text text-emerald-500  font-semibold">Username</span>
+                    </label>
+                    <input type="text" placeholder=" Masukkan Username" class="w-full input input-bordered input-success" />
+                </div>
+                <div>
+                    <label class="label">
+                        <span class="text-base label-text text-emerald-500  font-semibold">Password</span>
+                    </label>
+                    <input type="password" placeholder=" Masukkan Password"
+                        class="w-full input input-bordered input-success" />
+                </div>
+                <a href="#" class="text-1xl font-mono text-emerald-500 hover:underline hover:text-blue-600">Lupa Password?</a>
+                <div>
+                    <button class="btn glass text-white bg-gray-500 hover:bg-gradient-to-r from-emerald-500 to-blue-700 hover:ring-4">LOGIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Jam digital
+        function updateClock() {
+            const clockElement = document.getElementById("clock");
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, "0");
+            const minutes = String(now.getMinutes()).padStart(2, "0");
+            const seconds = String(now.getSeconds()).padStart(2, "0");
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            clockElement.textContent = timeString;
+        }
+    
+        setInterval(updateClock, 1000);
+    
+        // Fungsi untuk menampilkan atau menyembunyikan alert
+        function toggleAlert(success) {
+            if (success) {
+                $('.alert-success').removeClass('hidden');
+                $('.alert-error').addClass('hidden');
+                setTimeout(function(){
+                    window.location.href = '/usingframework/index.html';
+                }, 2000);
+            } else {
+                $('.alert-error').removeClass('hidden');
+                $('.alert-success').addClass('hidden');
+            }
+        }
+
+        // Menuju login
+        $(document).ready(function(){
+            $('button').click(function(e){
+                e.preventDefault(); 
+                let username = $('input[type="text"]').val();
+                let password = $('input[type="password"]').val();
+                if (username === 'hasan' && password === '123'){
+                    toggleAlert(true); // Tampilkan alert sukses
+                } else{
+                    toggleAlert(false); // Tampilkan alert gagal
+                }
+            });
+        });
+    </script>
+</body>
+</html>

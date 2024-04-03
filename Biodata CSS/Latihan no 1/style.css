@@ -1,0 +1,16 @@
+.bio{
+    color: red;
+}
+.fto{
+    border: 5px solid;
+    border-radius: 10px;
+}
+.dtadri{
+    color: green;
+}
+.nm, .npm, .alma{
+    font-weight: bold;
+}
+.sd, .smp, .smk{
+    font-family: Arial;
+}

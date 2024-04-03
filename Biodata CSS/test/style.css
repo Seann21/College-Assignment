@@ -1,0 +1,73 @@
+    @font-face{
+        font-family: 'Zapf Chancery';
+        src: url('/ZapfChancery-Italic.otf') format('opentype');
+    }
+
+    /* BAGIAN HEADER */
+    .slmt{
+        text-align: center;
+        margin-left: 9rem;
+        font-size: 75px;
+        font-family: 'Zapf Chancery', cursive;
+        font-weight: 500;
+        position: relative;
+        bottom: 33px;
+    }
+
+    .fto{
+        height: 130px;
+        margin-left: 50px;
+        border: 3px solid mediumblue;
+        border-radius: 200px;   
+        position: absolute;
+        top: 9px;
+    }
+
+
+    /* Content */
+    .bt{
+        text-align: center;
+        border: 2px solid;
+        background-color: #ffff99;
+        padding: 25px;
+        padding-bottom: 38px;
+        width: 185px;
+        height: 20px;
+        margin-top: 20px;
+        margin-left: 28px;
+        font-family: monospace;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .rp{
+        text-align: center;
+        border: 2px solid;
+        background-color: #66ffff;
+        padding: 25px;
+        padding-top: 2px;
+        padding-bottom: 55px;
+        width: 185px;
+        height: 20px;
+        margin-top: 20px;
+        margin-left: 28px;
+        font-family: monospace;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .hb{
+        text-align: center;
+        border: 2px solid;
+        background-color: #ccff00;
+        padding: 25px;
+        padding-bottom: 38px;
+        width: 185px;
+        height: 15px;
+        margin-top: 20px;
+        margin-left: 28px;
+        font-family: monospace;
+        font-size: 30px;
+        font-weight: normal;
+    }
+
